@@ -1,0 +1,278 @@
+body{
+  background-image: radial-gradient( circle 815px at 23.4% -21.8%,  rgba(9,29,85,1) 0.2%, rgba(0,0,0,1) 100.2% );
+  overflow: hidden;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  max-height: auto;
+  overflow-y: auto; 
+  
+                       
+}
+
+.dropDown{
+  color: azure;
+  padding: 4px; 
+  width: 120x;
+  margin-left: 14px;
+}
+
+.aboutNotes{
+  text-align: center;
+}
+
+.dropDownItem{
+  cursor: pointer;
+  text-align: center;
+}
+
+.dropDownItem:hover{
+  color: rgb(238, 255, 0);
+}
+
+.about{
+  text-align: center;
+}
+
+.App{
+  background-color: #21D4FD;
+  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+  
+
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  overflow-y: auto; 
+}
+
+
+
+h1{
+   color: rgb(231, 236, 240);
+   font-family: 'Caveat', cursive;
+  font-size: 50px;
+   margin-top: 3%;
+   display:inline;
+   float: left;
+ }
+
+ h2{
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 100;
+  font-size: 20px;
+  float: left;
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 8%;
+ }
+
+ h5{
+  color: rgb(231, 236, 240);
+  font-family: "Times New Roman", Times, serif;
+ font-size: 20px;
+ font-weight: 100;
+  margin-top: 3%;
+  margin-right: 30px;
+  float: right;
+  display:inline;
+}
+
+.home:hover{
+  color: rgb(238, 255, 0);
+ } 
+
+h4{
+  color: rgb(231, 236, 240);
+  font-family: "Times New Roman", Times, serif;
+ font-size: 20px;
+ font-weight: 100;
+  margin-top: 3%;
+  margin-right: 80px;
+  float: right;
+  display:inline;
+}
+
+.about:hover{
+  color: rgb(238, 255, 0);
+ } 
+
+ 
+
+ .toggleIcon{ 
+  float: left;
+  margin-left: 15px;
+  margin-top: 8px;
+  padding: 12px 16px;
+  font-size: 30px;
+}
+
+
+.todo-component{
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(176,229,208,1) 42%, rgba(92,202,238,0.41) 93.6% );
+ border-radius: 10px;
+ width: 20cm;
+ height: auto;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 15%;
+ margin-bottom: auto;
+ max-height: auto;
+ overflow-y: auto;
+ }
+
+ .btnArea{
+  position: absolute;
+  margin-top: 200px;
+   
+}
+
+ .todo-input{
+   display: flex;
+   margin-left: 50px;
+   margin-right: 50px;
+   align-items: center;
+   justify-items: center;
+   padding-bottom: 100px;
+  
+
+ }
+
+ .todo-input-item{
+  margin-top: 50px;
+  display: flex;
+   align-items: left;
+   flex-direction: column;
+   margin-right: 25px;
+   
+   
+ }
+ 
+ .todo-input-item label{
+   font-weight: bold;
+   margin-right: 150px;
+   margin-bottom: 5%;
+ }
+
+
+ .todo-input-item input{
+   padding: 8px;
+   border: none;
+   width: 250px;
+   align-items: center;
+   border-radius: 8px;
+   
+ }
+
+ .placeholder{
+   align-items: center;
+ }
+
+ .selectingBtn {
+   background-color: rgb(27, 219, 107)
+ }
+
+ .selectingBtn {
+   color: rgb(0, 0, 0);
+   border: none;
+   outline: 2px;
+   border-radius: 5px;
+   margin-top: 25px;
+   padding: 10px;
+   width: 60px;
+   height: 35px;
+   cursor: pointer;
+} 
+
+ .selectingBtn:hover {
+  background-color: rgb(146, 235, 146)
+ } 
+
+
+
+ .secondaryBtn {
+  background-color: rgb(205, 206, 205)
+}
+
+ .secondaryBtn {
+  border: none;
+  margin-top: 5px;
+  border-radius: 0px;
+  align-items: center;
+  padding: 10px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.active{
+  background-color: rgb(27, 219, 107)
+}
+
+.todo-list{
+  align-items: center;
+  top: 58%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.todo-list-item{
+  background-color: rgb(44, 44, 44);
+  align-content: center;
+  left: 2px;
+  height: auto;
+  width: 15.5cm;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0px 3px 5px rgb(0, 0, 0)
+}
+
+.todo-list-item h3{
+  color: rgb(27, 219, 107)
+}
+
+.todo-list-item h3{
+  top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px;  
+
+}
+
+.todo-list-item p{
+  color: white;
+}
+
+.todo-list-item p{
+  top: 1cm;
+  font-size: 14px;
+  margin-top: 8px;  
+}
+
+.icon {
+  color: aliceblue;
+  font-size: 25px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.icon:hover{
+  color: red
+}
+
+.check-icon{
+  color: aliceblue;
+  font-size: 25px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.check-icon:hover{
+  color: rgb(27, 219, 107);
+}
