@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { createRoot } from "react-dom/client";
 import {  AiOutlineCheck, AiOutlineDelete } from 'react-icons/ai';
+import { getAuth } from 'firebase/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2';
@@ -23,11 +23,12 @@ function Home() {
   const [completedTodos,setCompletedTodos] = useState([]); 
   const toDoCollectionRef =  collection(db, 'toDoList');
   const completedToDoCollectionRef =  collection(db, 'completedToDoList');
+     
  
   const onInput1= (e) => setNewTitle(e.target.value);
   const onInput2= (e) => setNewDescription(e.target.value);
-  const rootElement = document.getElementById("root");
-  const root = createRoot(rootElement)
+  /*const rootElement = document.getElementById("root");
+  const root = createRoot(rootElement)*/
 
   const notify2 = (index, title, description) => {
     handleComplete(index, title, description);
@@ -89,9 +90,10 @@ function Home() {
       progress: undefined,
       theme: "dark",
     })
-    setTimeout(() =>{
+  /*  setTimeout(() =>{
       window.location.reload(true);
     },1000);
+    */
     
   }};
 
@@ -137,7 +139,7 @@ if (result.isConfirmed) {
 
     localStorage.setItem('todo-list', JSON.stringify(reducedTodo));
     setTodos(reducedTodo)*/
-    window.location.reload(true);
+  /*  window.location.reload(true);*/
   }
 
   const handleDeleteTodoClicks = handleClick1;
@@ -165,7 +167,7 @@ if (result.isConfirmed) {
     }
     
     )
-    window.location.reload(true);
+  /*  window.location.reload(true);*/
     ;
 
 
@@ -185,7 +187,7 @@ if (result.isConfirmed) {
     setCompletedTodos(reducedTodo)*/
     const CompletedToDoDoc = doc(db, 'completedToDoList', index);
     await deleteDoc(CompletedToDoDoc);
-    window.location.reload(true);
+    /*window.location.reload(true);*/
   }
   
  useEffect(()=>{
@@ -229,17 +231,17 @@ if (result.isConfirmed) {
 
     savedCompletedTodo();     
    
-},[])
+},)
 
   
- return (
-                                 
+ return (                    
 <div>   
     <div >
     <Header />  
     </div>
-                                               
-
+    
+                                    
+      
       <div className='todo-component'>    
       <div className='todo-input'>
 

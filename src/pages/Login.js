@@ -29,12 +29,15 @@ function Login() {
         try {
        await signInWithPopup (auth,googleProvider)
        auth.onAuthStateChanged(user => {
-        navigateToHome ();
+        const userName = user.displayName;
+        localStorage.setItem('userName', userName)
+       navigateToHome ();
        })
-      
+       
         }
         catch (err)
         {
+            
             console.error(err);
         }
            }

@@ -1,9 +1,8 @@
 import {React, useState} from 'react';
-import { AiOutlineBars } from 'react-icons/ai';
 import { IoMdLogIn } from "react-icons/io";
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
-import {auth, googleProvider} from './firebase';
+import {auth,} from './firebase';
 import { signOut } from 'firebase/auth';
 
 function Header(){
@@ -28,13 +27,21 @@ function Header(){
       })
     }
 
-    const [open, setOpen] = useState(false);
+    const [open] = useState(false);
  const Menus = [ "Login" ];
  
 
 return(
-<div className="app"  action="" id="toDoList">
-      <div>
+  <div className='app' action="" id='toDoList'>
+    <div>
+  <p className='greeting'>
+          Welcome {localStorage.getItem('userName')}
+        </p>
+        </div>
+
+      <div > 
+        
+      
       <h9>
          <div className="logout" onClick={logOutScreen}>Logout
          </div> 
@@ -51,9 +58,13 @@ return(
          <div className="home" onClick ={navigateToHome}> Home </div> 
           </h5>
 
-          <h1> 
+         <h1> 
         To do list 
         </h1>
+
+        
+        
+     
 
       
 {open && (
