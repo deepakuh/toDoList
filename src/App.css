@@ -1,126 +1,73 @@
-body{
-  background-image: radial-gradient( circle 815px at 23.4% -21.8%,  rgba(9,29,85,1) 0.2%, rgba(0,0,0,1) 100.2% );
-  overflow: hidden;
-  height: auto;
+body {
+  background-color: #bbbbbb;
+  width:100%; 
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
   max-height: auto;
-  overflow-y: auto; 
+ overflow-y: auto;                
+}
+
+
+.contactPage{
+  color: rgb(61, 26, 26);
+  line-height: 1cm;
+  font-family: "Times New Roman", Times, serif;
+  text-align: left;
+  justify-content: center;
   
-                       
 }
 
-.dropDown{
-  color: azure;
-  padding: 4px; 
-  width: 120x;
-  margin-left: 14px;
-}
 
-.aboutNotes{
+
+.aboutPage{
+  color: rgb(61, 26, 26);
+  line-height: 1cm;
+font-family: 'Roboto', sans-serif;
+  justify-content: center;
   text-align: center;
-}
-
-.dropDownItem{
-  cursor: pointer;
-  text-align: center;
-}
-
-.dropDownItem:hover{
-  color: rgb(238, 255, 0);
-}
-
-.about{
-  text-align: center;
-}
-
-.App{
-  background-color: #21D4FD;
-  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
-  
-
+  margin-top:11%;
   position: fixed;
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  overflow-y: auto; 
+  width:100%;
+  height:100%;
 }
 
-
-
-h1{
-   color: rgb(231, 236, 240);
-   font-family: 'Caveat', cursive;
-  font-size: 50px;
-   margin-top: 3%;
-   display:inline;
-   float: left;
- }
-
- h2{
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 100;
-  font-size: 20px;
-  float: left;
-  position: absolute;
-  margin-left: 15px;
-  margin-top: 8%;
- }
-
- h5{
-  color: rgb(231, 236, 240);
-  font-family: "Times New Roman", Times, serif;
- font-size: 20px;
- font-weight: 100;
-  margin-top: 3%;
-  margin-right: 30px;
-  float: right;
-  display:inline;
+.bottomCorner{
+  color: rgb(156, 156, 156);
+  font-family: 'Cormorant', serif;
+  text-align: right;
+  right: 1cm;
+  margin-top:6cm;
+  position: fixed;
+  width:100%;
+  height:100%;
 }
 
-.home:hover{
-  color: rgb(238, 255, 0);
- } 
-
-h4{
-  color: rgb(231, 236, 240);
-  font-family: "Times New Roman", Times, serif;
- font-size: 20px;
- font-weight: 100;
-  margin-top: 3%;
-  margin-right: 80px;
-  float: right;
-  display:inline;
-}
-
-.about:hover{
-  color: rgb(238, 255, 0);
- } 
-
+.contactPage{
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  color: rgb(7, 7, 7);
+   margin-top: 10%;
+   position: fixed;
+   margin-left: 5%;
  
-
- .toggleIcon{ 
-  float: left;
-  margin-left: 15px;
-  margin-top: 8px;
-  padding: 12px 16px;
-  font-size: 30px;
-}
-
+ }
 
 .todo-component{
-  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(176,229,208,1) 42%, rgba(92,202,238,0.41) 93.6% );
+ background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(176,229,208,1) 42%, rgba(92,202,238,0.41) 93.6% );
  border-radius: 10px;
  width: 20cm;
+ position: absolute;
  height: auto;
- margin-left: auto;
+ margin-left: 22%;
  margin-right: auto;
- margin-top: 15%;
+ margin-top: 13%;
  margin-bottom: auto;
  max-height: auto;
  overflow-y: auto;
+ 
+            
  }
 
  .btnArea{
@@ -184,6 +131,7 @@ h4{
    width: 60px;
    height: 35px;
    cursor: pointer;
+   
 } 
 
  .selectingBtn:hover {

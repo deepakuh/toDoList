@@ -1,0 +1,120 @@
+.app{
+    background-color: #bbbbbb;
+    position: fixed;
+    height: 25%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+     overflow-y: auto; 
+   }
+   
+
+  h1{
+   /* color: rgb(231, 236, 240);*/
+    font-family: 'Caveat', cursive;
+   font-size: 50px;
+    margin-top: 1.5%;
+    display:inline;
+    float: left;
+    margin-left: 3%;
+  }
+ 
+  h2{
+   font-family: "Times New Roman", Times, serif;
+   font-weight: 100;
+   font-size: 20px;
+   float: left;
+   position: absolute;
+   margin-left: 15px;
+   margin-top: 8%;
+  }
+ 
+  h5{
+   /*color: rgb(231, 236, 240);*/
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+  font-weight: 100;
+   margin-top: 3%;
+   margin-right: 50px;
+   float: right;
+   display:inline;
+   cursor: pointer;    
+ }
+ 
+ .home:hover{
+   color: rgb(238, 255, 0);
+  } 
+ 
+ h4{
+   /*color: rgb(231, 236, 240);*/
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+  font-weight: 100;
+   margin-top: 3%;
+   margin-right: 50px;
+   float: right;
+   display:inline;
+   cursor: pointer;    
+ }
+ 
+ .about:hover{
+   color: rgb(238, 255, 0);
+  }
+  
+  h6{
+   /* color: rgb(231, 236, 240);*/
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+   font-weight: 100;
+    margin-top: 3%;
+    margin-right: 50px;
+    float: right;
+    display:inline;
+    cursor: pointer;    
+  }
+
+  h9{
+    /* color: rgb(231, 236, 240);*/
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+     margin-top: 3%;
+     margin-right: 70px;
+     float: right;
+     display:inline;
+     cursor: pointer;    
+   }
+
+   .logout:hover{
+    color: rgb(238, 255, 0);
+   }
+
+  .contact:hover{
+    color: rgb(238, 255, 0);
+  }
+ 
+  
+ 
+  .toggleIcon{ 
+   float: left;
+   margin-left: 15px;
+   margin-top: 8px;
+   padding: 12px 16px;
+   font-size: 30px;
+ }
+
+ .dropDown{
+   /* color: azure;*/
+    padding: 4px; 
+    width: 120x;
+    margin-left: 14px;
+  }
+
+  .dropDownItem{
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .dropDownItem:hover{
+    color: rgb(238, 255, 0);
+  }
