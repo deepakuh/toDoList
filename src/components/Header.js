@@ -33,11 +33,7 @@ function Header(){
 
 return(
   <div className='app' action="" id='toDoList'>
-    <div>
-  <p className='greeting'>
-          Welcome {localStorage.getItem('userName')}
-        </p>
-        </div>
+    
 
       <div > 
         
@@ -49,6 +45,7 @@ return(
       <h6>
          <div className="contact" onClick={navigateToContact}>Contact
          </div> 
+         
           </h6>
         <h4>
          <div className="about" onClick={navigateToAbout}>About
@@ -61,7 +58,9 @@ return(
          <h1> 
         To do list 
         </h1>
-
+        <p className='greeting'>
+          Welcome {localStorage.getItem('userName')} 
+        </p>
         
         
      

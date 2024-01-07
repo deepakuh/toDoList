@@ -1,12 +1,13 @@
 .app{
     background-color: #bbbbbb;
-    position: fixed;
+    position: sticky;
     height: 25%;
     width: 100%;
     background-size: cover;
     background-position: center;
-     overflow-y: auto; 
-   }
+    overflow-y: auto; 
+
+    }
    
 
   h1{
@@ -20,15 +21,13 @@
   }
 
   .greeting{
-    /* color: rgb(231, 236, 240);*/
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
     font-weight: 100;
-     margin-top:1%;
-     margin-right: 10px;
-     float: right;
-     cursor: pointer; 
-     float: right
+     margin-top:2%;
+     margin-left: 15cm;
+     
+     
    }
   
    
@@ -93,7 +92,7 @@
     font-size: 16px;
     font-weight: 100;
      margin-top: 3%;
-     margin-right: 70px;
+     margin-right: 50px;
      float: right;
      display:inline;
      cursor: pointer;    

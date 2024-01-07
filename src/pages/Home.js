@@ -1,346 +1,170 @@
 import React, { useEffect, useState } from 'react';
-import {  AiOutlineCheck, AiOutlineDelete } from 'react-icons/ai';
-import { getAuth } from 'firebase/auth';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { AiOutlineCheck, AiOutlineDelete } from 'react-icons/ai';
 import Swal from 'sweetalert2';
 import '../App.css';
 import Header from '../components/Header';
-import {getDocs, addDoc, collection, deleteDoc, doc} from 'firebase/firestore';
+import { getDocs, addDoc, collection, deleteDoc, doc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../components/firebase';
+import { toastSuccess, toastWarn } from '../util/Helper';
 
 
+const Home = () => {
+  const [isCompleteScreen, setIsCompleteScreen] = useState(false);
+  const [allTodos, setTodos] = useState([]);
+  const toDoCollectionRef = collection(db, 'toDoList');
+  const getDoc = (id) => doc(db, 'toDoList', id);
+  const usersCollectionRef = collection(db, 'usersDetail');
 
-function Home() {
+  useEffect(() => {
+    getToDoList()
+  }, [])
+
+  const getToDoList = async () => {
+    const user = localStorage.getItem('userID')
+    let users = {
+            userID: user 
+          }
+    addDoc(usersCollectionRef, users);
+     const data = await getDocs(toDoCollectionRef);
+    const filteredData = data.docs.filter(doc1=> doc1.data().userId == user).map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+   
+    setTodos(filteredData);
+
+  }
 
   
-  
-  
-  const [isCompleteScreen,setIsCompleteScreen] = useState(false);
-  const [allTodos,setTodos] = useState([]);
-  const [newTitle, setNewTitle,] = useState("");
-  const [newDescription, setNewDescription] = useState("");
-  const [completedTodos,setCompletedTodos] = useState([]); 
-  const toDoCollectionRef =  collection(db, 'toDoList');
-  const completedToDoCollectionRef =  collection(db, 'completedToDoList');
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    const user = localStorage.getItem('userID');
      
- 
-  const onInput1= (e) => setNewTitle(e.target.value);
-  const onInput2= (e) => setNewDescription(e.target.value);
-  /*const rootElement = document.getElementById("root");
-  const root = createRoot(rootElement)*/
-
-  const notify2 = (index, title, description) => {
-    handleComplete(index, title, description);
-    toast.success('Task Completed', {
-      position: "top-center",
-      autoClose: 800,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-      theme: "dark",
-      })
-}
-
-
-  const handleAddTodo = async ()=>{
-    
-    let newTodoItem ={
-      title:newTitle,
-      description:newDescription
-    };
-    if (newTodoItem.title==0) {
-      toast.warn('Title cannot be empty', {
-        position: "top-right",
-        autoClose: 1300,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        theme: "colored",
-        })
-        setNewDescription("");
+    if (event.target.title.value.length > 0) {
+      let toDo = {
+        title: event.target.title.value,
+        description: event.target.description.value,
+        completed: false,
+        userId: user
       }
-    else { /*let updatedTodoArr = [...allTodos];*/
-      setNewTitle("");
-      setNewDescription("");
-
-   /* updatedTodoArr.push(newTodoItem);
-    setTodos(updatedTodoArr);
-   localStorage.setItem('todo-list',JSON.stringify(updatedTodoArr))
-   */
-    
-   await addDoc (toDoCollectionRef, 
-    {
-      TitleText:newTitle,
-      DescriptionText: newDescription
+      addDoc(toDoCollectionRef, toDo)
+        .then(() => {
+          event.target.reset()
+          toastSuccess('Added Successfully')
+          getToDoList()
+        })
+    } else {
+      toastWarn('Title cannot be empty')
     }
-    )
+  }
 
-    toast.success('Added Successfully', {
-      position: "top-center",
-      autoClose: 800,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-      theme: "dark",
-    })
-  /*  setTimeout(() =>{
-      window.location.reload(true);
-    },1000);
-    */
-    
-  }};
+  const setItemCompleted = (toDo) => {
+    updateDoc(getDoc(toDo.id),
+      {
+        completed: true,
+        completedOn: serverTimestamp()
+      }).then(() => {
+        toastSuccess('Task Completed')
+        getToDoList()
+      })
+
+  }
 
 
-  const handleClick1 = (index) => {
-      Swal.fire({
+  const handleDeleteTodoClicks = (index) => {
+    Swal.fire({
       title: 'Delete',
       text: 'Do you want to delete?',
       icon: 'warning',
       showDenyButton: true,
       confirmButtonText: 'Yes',
       denyButtonText: 'No',
-}).then((result) => {
-  if (result.isConfirmed) {
-    handleDeleteTodo(index);
-  } else if (result.isDenied) {
-  }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteDoc(getDoc(index))
+          .then(() => {
+            getToDoList()
+          })
+      }
     })
   }
 
-  const handleClick2 = (index) => {
-    Swal.fire({
-    title: 'Delete',
-    text: 'Do you want to delete?',
-    icon: 'warning',
-    showDenyButton: true,
-    confirmButtonText: 'Yes',
-    denyButtonText: 'No',
-}).then((result) => {
-if (result.isConfirmed) {
-  handleDeleteCompletedTodo(index);
-} else if (result.isDenied) {
-}
-  })
-}
-
-  const handleDeleteTodo = async(index) =>{
-
-    const toDoDoc = doc(db, 'toDoList', index);
-    await deleteDoc(toDoDoc);
-   /* let reducedTodo = [...allTodos];
-    reducedTodo.splice(index,1);
-
-    localStorage.setItem('todo-list', JSON.stringify(reducedTodo));
-    setTodos(reducedTodo)*/
-  /*  window.location.reload(true);*/
+  const getDate = (date) => {
+    let dateN = new Date(0)
+    dateN.setUTCSeconds(date.seconds)
+    return dateN.toDateString()
   }
 
-  const handleDeleteTodoClicks = handleClick1;
-  const handleDeleteCompletedClicks = handleClick2;
-  const completedNotify = notify2;
-  
-
-  const handleComplete = async (index, title, description) =>{
-    let now = new Date();
-    let dd = now.getDate();
-    let mm = now.getMonth() + 1;
-    let yyyy = now.getFullYear();
-    let completedOn = dd + '-' + mm + '-' + yyyy ;
-     
-   /* let filteredItem = {
-      ...allTodos[index],
-      completedOn:completedOn,
-    };*/
-
-     await addDoc (completedToDoCollectionRef,
-    {
-      TitleText:title,
-      DescriptionText: description,
-      CompletedOn:  completedOn
-    }
-    
-    )
-  /*  window.location.reload(true);*/
-    ;
-
-
-     /*let updatedCompletedArr = [...completedTodos];
-    updatedCompletedArr.push(filteredItem);
-    setCompletedTodos(updatedCompletedArr);*/
-    handleDeleteTodo(index);
-    /* localStorage.setItem('completedTodos', JSON.stringify(updatedCompletedArr));*/
-    
-  };
-
-  const handleDeleteCompletedTodo = async(index) =>{
-   /* let reducedTodo = [...completedTodos]; 
-    reducedTodo.splice(index,1);
-
-    localStorage.setItem('completedTodos', JSON.stringify(reducedTodo));
-    setCompletedTodos(reducedTodo)*/
-    const CompletedToDoDoc = doc(db, 'completedToDoList', index);
-    await deleteDoc(CompletedToDoDoc);
-    /*window.location.reload(true);*/
-  }
-  
- useEffect(()=>{
-  /*  let savedTodo = JSON.parse(localStorage.getItem('todo-list'));
-    let savedCompletedTodo = JSON.parse(localStorage.getItem('completedTodos'));
-    */
-    
-    const savedTodo = async()=>{
-      try {
-        const data = await getDocs (toDoCollectionRef);
-        const filteredData = data.docs.map ((doc)=> ({
-          ...doc.data(),
-          id: doc.id,
-        })); 
-        setTodos(filteredData);
-      }
-      catch (err)
-      {
-        console.error(err);
-      }
-           
-    };
-
-    savedTodo();
-
-    const savedCompletedTodo = async()=>{
-      try {
-        const data = await getDocs (completedToDoCollectionRef);
-        const filteredData = data.docs.map ((doc)=> ({
-          ...doc.data(),
-          id: doc.id,
-        })); 
-        setCompletedTodos(filteredData);
-      }
-      catch (err)
-      {
-        console.error(err);
-      }
-           
-    };
-
-    savedCompletedTodo();     
-   
-},)
-
-  
- return (                    
-<div>   
-    <div >
-    <Header />  
-    </div>
-    
-                                    
-      
-      <div className='todo-component'>    
-      <div className='todo-input'>
-
-      <div className="btnArea"> 
-      <button className={`secondaryBtn ${isCompleteScreen===false && 'active'}`} 
-      onClick={()=>setIsCompleteScreen(false)}>
-      TO-DO
-      </button>
-      <button className={`secondaryBtn ${isCompleteScreen===true && 'active'}`} 
-      onClick={()=>setIsCompleteScreen(true)}>
-      COMPLETED
-      </button>
-    </div>
-
-      <div className='todo-input-item' >
-      <label>Title</label>
-      
-      <input id="title" type="text" value={newTitle} onInput1={onInput1} onChange={(e)=>setNewTitle(e.target.value)}  placeholder="New Task Title" />
+  return (
+    <div>
+      <div >
+        <Header />
       </div>
-
-      <div className="todo-input-item">
-      <label>Notes</label>
-      <input id="notes" type="text" value={newDescription} onInput2={onInput2} onChange={(e)=>setNewDescription(e.target.value)} placeholder="Task Description" />
-      </div>
-
-      <div className="todo-input-item">
-     <button type="button" onClick={handleAddTodo} className='selectingBtn'>ADD</button> 
-     
-     <ToastContainer
-  position="top-center"
-  autoClose={800}
-  hideProgressBar={false}
-  newestOnTop={false}
-  closeOnClick={false}
-  rtl={false}
-  pauseOnFocusLoss={false}
-  draggable={false}
-  pauseOnHover={false}
-  theme="dark"
-/>
-      </div> 
-      </div>
-
-      
-
-
-      <div className="todo-list">
-      
-{isCompleteScreen===false && allTodos.map ((item)=>{
-  return(
-    
-    <div className= "todo-list-item" key={item.id}> 
-
-    <div>
-    <h3>{item.TitleText}</h3>
-    <p>{item.DescriptionText}</p>
-    </div>
-
-    <div>
-      <AiOutlineDelete className= "icon" 
-      onClick={()=>handleDeleteTodoClicks(item.id)} 
-      title="Delete"/>
-      <AiOutlineCheck className= "check-icon" 
-      onClick={()=>completedNotify(item.id, item.TitleText, item.DescriptionText)} 
-       title="Complete"/>
-     </div>
-
- 
-    </div>  
-  )
-  })}
-
-{isCompleteScreen===true && completedTodos.map ((item)=>{
-  return(
-    
-    <div className= "todo-list-item" key={item.id}> 
-
-    <div>
-    <h3>{item.TitleText}</h3>
-    <p>{item.DescriptionText}</p>
-    <p><small>Completed on : {item.CompletedOn}</small></p>
-    </div>
-    
-
-    <div>
-      <AiOutlineDelete className= "icon" onClick={()=>handleDeleteCompletedClicks(item.id)} title="Delete"/>
-      
-     </div>
-
- 
-  
-  </div>  
-  )
-  })}
-              </div> 
+      <div className='todo-component'>
+        <div className='todo-input'>
+          <div className="btnArea">
+            <button className={`secondaryBtn ${isCompleteScreen === false && 'active'}`}
+              onClick={() => setIsCompleteScreen(false)}>
+              TO-DO
+            </button>
+            <button className={`secondaryBtn ${isCompleteScreen === true && 'active'}`}
+              onClick={() => setIsCompleteScreen(true)}>
+              COMPLETED
+            </button>
+          </div>
+          <form onSubmit={onSubmit}>
+            <div className='todo-input-item' >
+              <label>Title</label>
+              <input id="title" type="text" name="title" placeholder="New Task Title" />
             </div>
+            <div className="todo-input-item">
+              <label>Notes</label>
+              <input id="notes" type="text" name="description" placeholder="Task Description" />
             </div>
-   
- );
+            <div className="todo-input-item">
+              <button type="submit" className='selectingBtn'>ADD</button>
+            </div>
+          </form>
+        </div>
+        <div className="todo-list">
+          {isCompleteScreen === false && allTodos.filter(todo => !todo.completed).map((item) => {
+            return (
+              <div className="todo-list-item" key={item.id}>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+                <div>
+                  <AiOutlineDelete className="icon"
+                    onClick={() => handleDeleteTodoClicks(item.id)}
+                    title="Delete" />
+                  <AiOutlineCheck className="check-icon"
+                    onClick={() => setItemCompleted(item)}
+                    title="Complete" />
+                </div>
+              </div>
+            )
+          })}
+          {isCompleteScreen === true && allTodos.filter(todo => todo.completed).map((item) => {
+            return (
+              <div className="todo-list-item" key={item.id}>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <p><small>Completed on : {getDate(item.completedOn)}</small></p>
+                </div>
+                <div>
+                  <AiOutlineDelete className="icon" onClick={() => handleDeleteTodoClicks(item.id)} title="Delete" />
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+
+  );
 }
 
 export default Home;
