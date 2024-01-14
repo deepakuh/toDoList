@@ -49,7 +49,7 @@ function Login() {
     
     
   return (
-    <div>
+    <div className='loginBg'>
 
         <div className='heading'>
             Welcome to To-Do-List

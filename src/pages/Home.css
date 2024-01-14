@@ -1,0 +1,9 @@
+.homeBg {
+    background-color: antiquewhite;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    max-height: auto;
+    overflow-y: auto;                
+  }

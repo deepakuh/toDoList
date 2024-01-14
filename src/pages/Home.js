@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineCheck, AiOutlineDelete } from 'react-icons/ai';
 import Swal from 'sweetalert2';
-import '../App.css';
+import './Home.css';
 import Header from '../components/Header';
 import { getDocs, addDoc, collection, deleteDoc, doc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../components/firebase';
 import { toastSuccess, toastWarn } from '../util/Helper';
+import { Button, ButtonGroup } from '@chakra-ui/react'
 
 
 const Home = () => {
@@ -15,17 +16,41 @@ const Home = () => {
   const getDoc = (id) => doc(db, 'toDoList', id);
   const usersCollectionRef = collection(db, 'usersDetail');
 
-  useEffect(() => {
+  const user = localStorage.getItem('userID')
+    let users = {
+            userID: user 
+          }
+          
+          
+
+    useEffect(() => {
     getToDoList()
   }, [])
 
   const getToDoList = async () => {
     const user = localStorage.getItem('userID')
+    const userName = localStorage.getItem('userName')
     let users = {
-            userID: user 
-          }
+            userID: user,
+            userName: userName 
+          };
+          
+          
+          const userData = await getDocs(usersCollectionRef);
+
+                 
+     const userFlag = userData.docs.filter(doc2 => doc2.data().userID == user).map((doc) => ({
+
+        ...doc.data(),
+      
+    }));
+
+     if (userFlag[0] == null)
+   {
     addDoc(usersCollectionRef, users);
-     const data = await getDocs(toDoCollectionRef);
+   }
+
+       const data = await getDocs(toDoCollectionRef);
     const filteredData = data.docs.filter(doc1=> doc1.data().userId == user).map((doc) => ({
       ...doc.data(),
       id: doc.id,
@@ -97,7 +122,7 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className='homebg'>
       <div >
         <Header />
       </div>
@@ -123,7 +148,7 @@ const Home = () => {
               <input id="notes" type="text" name="description" placeholder="Task Description" />
             </div>
             <div className="todo-input-item">
-              <button type="submit" className='selectingBtn'>ADD</button>
+              <Button colorScheme='blue' type="submit" className='selectingBtn'>ADD</Button>
             </div>
           </form>
         </div>
