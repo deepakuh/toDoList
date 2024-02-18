@@ -1,0 +1,69 @@
+.aboutBg{
+background-image:url(https://img.freepik.com/free-vector/businessman-holding-pencil-big-complete-checklist-with-tick-marks_1150-35019.jpg?w=740&t=st=1705256612~exp=1705257212~hmac=36ee2d93e1910f657deb8fd698b5447dba2739bd2073000430a4015934662963);
+height:71vh;
+background-repeat: no-repeat;
+background-size: 350px;
+background-position: left bottom;
+}
+
+/*.aboutPage{
+ position: sticky;
+ width: 16cm;
+ margin-left: 8cm;
+ margin-bottom: auto;
+ max-height: auto;
+ opacity: 90%;
+}*/
+
+.heading1{
+    font-family: 'Roboto', sans-serif;
+    color:rgb(41, 40, 40);
+    font-size: 25px; 
+    margin-top: 3%;
+    text-align: center;
+    opacity: 70%;
+}
+
+.heading2{
+    font-family: 'Roboto', sans-serif;
+    color:rgb(41, 40, 40);
+    font-size: 23px; 
+    text-align: center;
+    opacity:70%;
+}
+
+.aboutPara{
+        font-family: 'Roboto', sans-serif;
+        color:rgb(41, 40, 40);
+        float: right;
+        margin-top: 5%;
+        margin-left: 25px; 
+        margin-right: 25px;
+        font-size: 20px;  
+        opacity: 60%;
+    }
+
+    .aboutPara1{
+        font-family: 'Roboto', sans-serif;
+        color:rgb(41, 40, 40);
+        float: right;
+        margin-top: 13%;
+        margin-left: 25px; 
+        margin-right: 25px;
+        font-size: 20px;  
+        opacity: 60%;
+    }
+
+    .aboutPara2{
+        font-family: 'Roboto', sans-serif;
+        color:rgb(41, 40, 40);
+        float: right;
+        margin-top: 6%;
+        margin-left: 25px; 
+        margin-right: 25px;
+        font-size: 20px;  
+        opacity: 60%;
+    }
+
+    
+    

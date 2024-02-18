@@ -17,14 +17,14 @@
     margin-top: 1.5%;
     display: inline;
     float: left;
-    margin-left: 3%
+    margin-left: 3%;
   }
 
   .greeting{
-    font-family: "Times New Roman", Times, serif;
-    font-size: 18px;
-    font-weight: 100;
-     margin-top:2%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 150;
+     margin-top:2.5%;
      margin-left: 15cm;
      
      
@@ -55,7 +55,7 @@
  }
  
  .home:hover{
-   color: rgb(238, 255, 0);
+   color: rgb(255, 174, 0);
   } 
  
  h4{
@@ -71,7 +71,7 @@
  }
  
  .about:hover{
-   color: rgb(238, 255, 0);
+  color: rgb(255, 174, 0);
   }
   
   h6{
@@ -99,11 +99,11 @@
    }
 
    .logout:hover{
-    color: rgb(238, 255, 0);
+    color: rgb(255, 174, 0);
    }
 
   .contact:hover{
-    color: rgb(238, 255, 0);
+    color: rgb(255, 174, 0);
   }
  
   

@@ -1,9 +1,7 @@
-.homeBg {
-    background-color: antiquewhite;
-    background-size: cover;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    max-height: auto;
-    overflow-y: auto;                
-  }
+.homeBg{
+/*background-color: rgb(205, 242, 247) ;   */
+height: 77vh;   
+background-size: 200px;   
+background-repeat: no-repeat, no-repeat;   
+animation: fade-in 3s;      
+}
