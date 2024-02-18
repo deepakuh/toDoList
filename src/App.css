@@ -1,4 +1,4 @@
-body {
+/*body {
   background-image: url(https://images.unsplash.com/photo-1518655048521-f130df041f66?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
   background-size: cover;
   margin-left: auto;
@@ -6,7 +6,7 @@ body {
   margin-top: auto;
   max-height: auto;
   overflow-y: auto;                
-}
+}*/
 
 
 .contactPage{
@@ -32,16 +32,7 @@ font-family: 'Roboto', sans-serif;
   height:100%;
 }
 
-.bottomCorner{
-  color: rgb(156, 156, 156);
-  font-family: 'Cormorant', serif;
-  text-align: right;
-  right: 1cm;
-  margin-top:6cm;
-  position: fixed;
-  width:100%;
-  height:100%;
-}
+
 
 .contactPage{
   font-family: 'Roboto', sans-serif;
@@ -53,25 +44,44 @@ font-family: 'Roboto', sans-serif;
  
  }
 
+ .welcomeUser{
+  color: rgb(77, 77, 77);
+  float: right;
+  margin-right: 3%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 100;
+ }
+
+ .todoHeading{
+  color: rgb(77, 77, 77);
+  margin-right: 3%;
+  font-family: 'caveat', sans-serif;
+  font-size: 25px;
+  font-weight: 100;
+ }
+
 .todo-component{
- background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(176,229,208,1) 42%, rgba(92,202,238,0.41) 93.6% );
+ background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(176,229,208,1) 42%, rgba(92,202,238,1) 93.6% );
  border-radius: 20px;
  width: 20cm;
  position: absolute;
- height: auto;
- margin-left: 22%;
+ height: 11cm;
+ margin-left: 15%;
  margin-right: auto;
  margin-top: 5%;
  margin-bottom: auto;
  max-height: auto;
  overflow-y: auto;
  
-            
  }
+
 
  .btnArea{
   position: absolute;
-  margin-top: 200px;
+  margin-top: 2px;
+  top: 10%;
+  left: 45%;
    
 }
 
@@ -81,20 +91,35 @@ font-family: 'Roboto', sans-serif;
    margin-right: 50px;
    align-items: center;
    justify-items: center;
-   padding-bottom: 100px;
-  
-
- }
+   padding-bottom: 10px;
+   position: fixed;
+  }
 
  .todo-input-item{
-  margin-top: 50px;
+  margin-top: 70px;
   display: flex;
    align-items: left;
+   height: 60px;
    flex-direction: column;
    margin-right: 25px;
    
-   
  }
+
+ .searchBar{
+   float: right;  
+   top: 9%;
+   left: 70%;
+   position: absolute;
+   padding-top: 8px;
+   padding-bottom: 8px;
+   margin-bottom: 40px;
+   outline: none;
+   text-align: left;
+   border-radius: 10px;
+   
+  }
+
+  
  
  .todo-input-item label{
    font-weight: bold;
@@ -109,33 +134,22 @@ font-family: 'Roboto', sans-serif;
    width: 250px;
    align-items: center;
    border-radius: 8px;
-   
+   outline: none;
  }
 
  .placeholder{
    align-items: center;
  }
 
+ 
  .selectingBtn {
-   background-color: rgb(27, 219, 107)
- }
-
- .selectingBtn {
-   color: rgb(0, 0, 0);
-   border: none;
-   outline: 2px;
-   border-radius: 5px;
-   margin-top: 25px;
-   padding: 10px;
-   width: 60px;
-   height: 35px;
-   cursor: pointer;
+   margin-top: 50px;
+   width: 2.5cm;
+   }
    
-} 
-
- .selectingBtn:hover {
-  background-color: rgb(146, 235, 146)
- } 
+   .selectingBtn:active{
+    transform: translateY(10px); 
+   }
 
 
 
@@ -145,13 +159,12 @@ font-family: 'Roboto', sans-serif;
 
  .secondaryBtn {
   border: none;
-  margin-top: 5px;
-  border-radius: 0px;
-  align-items: center;
-  padding: 10px;
+   border-radius: 20px;
+  padding: 8px;
+  top: 2px;
   width: fit-content;
   cursor: pointer;
-}
+  }
 
 .active{
   background-color: rgb(27, 219, 107)
@@ -159,25 +172,28 @@ font-family: 'Roboto', sans-serif;
 
 .todo-list{
   align-items: center;
-  top: 58%;
-  display: flex;
-  flex-direction: column;
-}
+  top: 25%;
+  left: 45%;
+  position: absolute;
+ 
+ }
 
 
 .todo-list-item{
   background-color: rgb(44, 44, 44);
   align-content: center;
   left: 2px;
-  height: auto;
-  width: 15.5cm;
+  height: 2.8cm;
+  width: 10cm;
   display: flex;
+  border-radius: 10px;
   justify-content: space-between;
-  padding: 25px;
+  padding: 20px;
   padding-bottom: 10px;
   padding-top: 10px;
   margin-bottom: 40px;
   box-shadow: 0px 4px 5px rgb(0, 0, 0)
+  
 }
 
 .todo-list-item h3{
@@ -205,7 +221,7 @@ font-family: 'Roboto', sans-serif;
 .icon {
   color: aliceblue;
   font-size: 25px;
-  margin-top: 20px;
+  margin-top: 3px;
   cursor: pointer;
 }
 
@@ -216,8 +232,9 @@ font-family: 'Roboto', sans-serif;
 .check-icon{
   color: aliceblue;
   font-size: 25px;
-  margin-top: 15px;
-  margin-left: 15px;
+  margin-top: 7px;
+  margin-left: 0px;
+  position: absolute;
 }
 
 .check-icon:hover{

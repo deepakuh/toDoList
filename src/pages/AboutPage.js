@@ -1,31 +1,33 @@
-import React from 'react'
-import Header from '../components/Header';
-import '../App.css';
+import React from "react";
+import "./AboutPage.css";
 
 function AboutPage() {
   return (
-    <div>
-      <div>
-      <Header />
+    <div className="aboutBg">
+      
+        <div className="heading1">
+        Todolist makes it frictionless to get all your tasks out of your head 
+        </div>
+        <div className="heading2">
+        and organized in one trusted place
+        </div>
+        
+        <p className="aboutPara" >
+        Capture tasks at the speed of thought
+        </p>
+
+        <p className="aboutPara1" >
+        Organize, prioritize, and get things done
+        </p>
+
+        <p className="aboutPara2" >
+        Focus on the right things at the right time
+        </p>
+
+       
+        
       </div>
-      <div className='aboutPage'>
-     <p> 
-      A to-do list is just a list of things you have to-do. 
-      <p>
-      That means basically anything and everything can be on your to-do list-but just because you've written your to-dos down doesn't mean your to-do list is actually useful. 
-      </p>
-      Effectively tracking when your work is due can help you prioritize and get great work done.
-     </p>
-     <p className='bottomCorner'>
-     Created using react in vs-code
-     </p>
-     </div>
-  
-    
-  
-    </div>
-    
-  )
+  );
 }
 
 export default AboutPage;

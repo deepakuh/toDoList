@@ -4,8 +4,6 @@ import { signInWithPopup } from 'firebase/auth';
 import {auth, googleProvider} from '../components/firebase';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../components/firebase';
 
 
 function Login() {
@@ -32,6 +30,9 @@ function Login() {
         try {
        await signInWithPopup (auth,googleProvider)
        auth.onAuthStateChanged(user => {
+        googleProvider.setCustomParameters({
+          prompt: 'select_account',
+        });
         const userName = user.displayName;
         const userID= user.uid;
         localStorage.setItem('userName', userName);
@@ -52,14 +53,14 @@ function Login() {
     <div className='loginBg'>
 
         <div className='heading'>
-            Welcome to To-Do-List
+           To-Do-List
         </div>
         <div className='signIn'>
             Sign in with your Google Account
         </div>
-        <div >
+        <div className='input1' >
       
-      <button className='input1' onClick={signInWithGoogle}><FcGoogle className='google' />&nbsp;  Sign in with Google</button>
+      <button className='input2' onClick={signInWithGoogle}><FcGoogle className='google' />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Sign in with Google</button>
       </div>
     </div>
   )

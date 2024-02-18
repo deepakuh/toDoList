@@ -1,0 +1,47 @@
+.contactBg {
+  background-image: url(https://img.freepik.com/free-vector/flat-design-illustration-customer-support_23-2148887720.jpg?w=740&t=st=1705327102~exp=1705327702~hmac=b8943d82705f1e519610b4277a70729914aed51dc99d10bd7d1f7a6b768ad779);
+  height: 77vh;
+  background-position: bottom right;
+  background-size: 500px;
+  background-repeat: no-repeat;
+}
+
+
+.contactPara1 {
+  font-family: "Roboto", sans-serif;
+  color: rgb(29, 29, 29);
+  display: inline;
+  top: 6cm;
+  margin-left: 4cm;
+  position: absolute;
+  font-size: 40px;
+}
+
+
+
+.gmailButton {
+  color: rgb(187, 23, 23);
+  position: absolute;
+  top: 8cm;
+  margin-left: 4.5cm;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.instagramButton {
+  color: rgb(221, 97, 47);
+  position: absolute;
+  top: 8cm;
+  margin-left: 6cm;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.linkedinButton {
+  color: rgb(27, 133, 233);
+  position: absolute;
+  top: 8cm;
+  margin-left: 7.5cm;
+  font-size: 30px;
+  cursor: pointer;
+}
